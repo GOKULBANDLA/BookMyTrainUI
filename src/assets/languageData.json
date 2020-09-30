@@ -1,0 +1,30 @@
+{
+    "en":{
+   "Source":"Source",
+   "Destination" :"Destination",
+   "Search" : "Search",
+   "TrainName" :"Train Name",
+   "TrainNumber" :"Train Number",
+   "Arrival" :"Arrival",
+   "Departure" :"Departure",
+   "Doj":"Date of Journey",
+   "Station" :"Select a Station",
+   "ChangeLanguage":"Change Language",
+   "Welcome":"Welcome to BookMyTrain",
+   "Reset":"Reset"
+},
+"german":{
+    "Source":"Quelle",
+   "Destination" :"Ziel",
+   "Search" : "Suche",
+   "TrainName" :"Zugname",
+   "TrainNumber" :"Zugnummer",
+   "Arrival" :"Ankunft",
+   "Departure" :"Abfahrt",
+   "Doj":"Datum der Reise",
+   "Station":"Wählen Sie eine Station",
+   "ChangeLanguage":"Sprache ändern",
+   "Welcome":"Willkommen bei BookMyTrain",
+   "Reset":"Zurücksetzen"
+}
+}

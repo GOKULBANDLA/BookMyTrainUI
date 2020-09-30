@@ -1,0 +1,13 @@
+#main-div{
+    padding-top: 50px;
+  }
+  ::ng-deep .ui-card-shadow{
+    border-style: solid;
+    border-color: lightblue;
+  }
+  ::ng-deep .ui-card-body{
+    background-image: linear-gradient(to right,#d7d2cc, #d7d2cc);
+  }
+ span{
+     font-weight: bold;
+ }
