@@ -15,6 +15,7 @@ import {CardModule} from 'primeng/card';
 import {ButtonModule} from 'primeng/button';
 import {ToastModule} from 'primeng/toast';
 import {TableModule} from 'primeng/table';
+import {MenubarModule} from 'primeng/menubar';
 import { BookingComponent } from './booking/booking.component';
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { BookingComponent } from './booking/booking.component';
     CardModule,
     ButtonModule,
     ToastModule,
-    TableModule
+    TableModule,
+    MenubarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

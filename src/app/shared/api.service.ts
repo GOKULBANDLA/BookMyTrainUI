@@ -8,10 +8,12 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ApiService {
+ 
   languageSettings = new BehaviorSubject<Language>({ Language :"en",Source:"Source", "Destination" :"Destination",
   "Search" : "Search","TrainName" :"Train Name", "TrainNumber" :"Train Number", "Arrival" :"Arrival","Reset":"Reset",
   "Departure" :"Departure", "Doj":"Date of Journey","Station" :"Select a Station","ChangeLanguage":"Change Language","Welcome":"Welcome to BookMyTrain",
   "Availability":"Availability", "Proceed":"Proceed"});
+  selectedTrain:any;
  
  private readonly url=environment.Api_Url;
   constructor(private http:HttpClient) { }
@@ -25,7 +27,13 @@ export class ApiService {
   FetchLanguageSetting(){
    return this.http.get(this.jsonUrl);
   }
+  BookTicket(ticketData) {
+    return this.http.post(this.url+'BookTicket',ticketData);
+   }
   errorHandler(error: HttpErrorResponse) {
+    if(error.status === 0){
+      alert('Server is not running. Please try again');
+    }
     return throwError(error.message || "server error.");
   }
 }

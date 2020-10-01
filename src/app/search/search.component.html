@@ -1,14 +1,4 @@
 <p-toast [style]="{marginTop: '80px'}" position="top-right" ></p-toast>
-<div class="ui-g-12 ui-md-6 ui-lg-6"></div>
-<div class="ui-g-12 ui-md-6 ui-lg-6">
-    <div class="ui-g-4">
-     <span>{{languageData.ChangeLanguage}}</span>
-    </div>
-    <div class="ui-g-8">
-        <p-dropdown [options]="languages" (onChange)="ChangeLanguageSettings($event)" [formControl]="language" [style]="{'width':'200px'}"
-            editable="true" placeholder="{{languageData.Station}}"></p-dropdown>
-    </div>
-</div>
 <br/>
 <div id="main-div">
 <ng-container class="card" style="text-align:center">

@@ -1,2 +1,8 @@
-
+<p-menubar>
+    <div>
+        <span>{{languageData.ChangeLanguage}}</span>
+        <p-dropdown [options]="languages" (onChange)="ChangeLanguageSettings($event)" [formControl]="language" [style]="{'width':'200px'}"
+        editable="true" placeholder="Select" style="margin-left:.25em"></p-dropdown>
+    </div>
+</p-menubar>
 <router-outlet></router-outlet>

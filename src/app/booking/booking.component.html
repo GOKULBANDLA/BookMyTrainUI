@@ -1,1 +1,24 @@
-<p>booking works!</p>
+<p-card  styleClass="ui-card-shadow">
+    <p-header>
+       Train Details
+    </p-header>
+    <table id="bordered"> 
+            <tr>
+                <th *ngFor="let item of Columns">{{item}}</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>{{SelectedTrain?.selectedData.trainNumber}}</td>
+                <td>{{SelectedTrain?.selectedData.trainName}}</td>
+                <td>{{SelectedTrain?.from.label}}</td>
+                <td>{{SelectedTrain?.to.label}}</td>
+                <td>{{SelectedTrain?.selectedData.arrival}}</td>
+                <td>{{SelectedTrain?.selectedData.departure}}</td>
+                <td>{{SelectedTrain?.searchData.dateOfJourney}}</td>
+                <td>
+                    <button pButton type="button" label="Confirm Booking" (click)="Confirm()" icon="pi pi-check" style="margin-right: .25em"></button>
+                </td>
+            </tr>
+    </table>
+    
+</p-card>
