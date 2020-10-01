@@ -15,10 +15,12 @@ import {CardModule} from 'primeng/card';
 import {ButtonModule} from 'primeng/button';
 import {ToastModule} from 'primeng/toast';
 import {TableModule} from 'primeng/table';
+import { BookingComponent } from './booking/booking.component';
 @NgModule({
   declarations: [
     AppComponent,
-    SearchComponent
+    SearchComponent,
+    BookingComponent
   ],
   imports: [
     BrowserModule,

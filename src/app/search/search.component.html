@@ -9,6 +9,7 @@
             editable="true" placeholder="{{languageData.Station}}"></p-dropdown>
     </div>
 </div>
+<br/>
 <div id="main-div">
 <ng-container class="card" style="text-align:center">
     <p-card  title="{{languageData.Welcome}}" styleClass="ui-card-shadow">
@@ -64,18 +65,23 @@
     </p-card>
 </ng-container>
 </div>
-    <p-table [value]="trainsList" *ngIf="searchFormGroup.valid">
+    <p-table [value]="trainsList" [columns]="columns" [responsive]="true" *ngIf="this.trainsList.length>0" [resizableColumns]="true">
         <ng-template pTemplate="header">
             <tr>
-                <th *ngFor="let col of columns">
+                <th *ngFor="let col of columns" pResizableColumn>
                     {{col.header}}
                 </th>
             </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-car>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
             <tr>
-                <td *ngFor="let col of columns">
-                        {{car[col.field]}}
+                <td *ngFor="let col of columns" class="ui-resizable-column">
+                    <div *ngIf="col.field!='proceed'">
+                        {{rowData[col.field]}}
+                    </div> 
+                    <div *ngIf="col.field == 'proceed'">
+                        <button pButton label="{{languageData.Proceed}}"[disabled]="!rowData.isAvailable" (click)="viewTrainDetails(rowData)" type="button"  class="ui-button-raised ui-button-primary"></button>
+                    </div>   
                 </td>
             </tr>
         </ng-template>

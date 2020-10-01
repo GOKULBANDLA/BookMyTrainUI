@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import {MessageService} from 'primeng/api';
 import { ApiService } from '../shared/api.service';
@@ -12,12 +12,12 @@ import { ApiService } from '../shared/api.service';
 
 export class SearchComponent implements OnInit {
 
-  constructor(private apiSevice:ApiService,private messageService: MessageService) { }
+  constructor(private apiSevice:ApiService,private messageService: MessageService,private ref: ChangeDetectorRef) { }
   searchFormGroup:FormGroup;
   minDate = new Date();
   maxDate :Date;
   stations =[];
-  trainsList=[];
+  trainsList:any[]=[];
   columns=[];
   languages=[{label:'English',value:'en'},{label:'German',value:'german'}];
   language = new FormControl();
@@ -47,7 +47,16 @@ export class SearchComponent implements OnInit {
   }
   SearchTrains(){
     if(this.searchFormGroup.value.source === this.searchFormGroup.value.destination){
-     this.messageService.add({severity:'error',summary:'Source and destination cannot be same',detail:'Error'});
+     this.messageService.add({severity:'error',summary:'Sorry',detail:'Source and destination cannot be same'});
+    }
+    else{
+      this.searchFormGroup.value.dateOfJourney =  new Date(this.searchFormGroup.value.dateOfJourney).toLocaleString();
+      this.apiSevice.GetTrains(this.searchFormGroup.value).subscribe((x:any[])=>{
+        this.trainsList=x;
+        if(x.length ===0){
+          this.messageService.add({severity:'warn',summary:'Sorry',detail:'No trains are running based on search criteria'});
+        }
+      })
     }
     this.SetColumns();
   }
@@ -58,14 +67,23 @@ export class SearchComponent implements OnInit {
       { field: 'source', header: this.languageData.Source },
       { field: 'destination', header: this.languageData.Destination },
       { field: 'departure', header: this.languageData.Arrival },
-      { field: 'arrival', header: this.languageData.Departure }
+      { field: 'proceed', header: this.languageData.Proceed }
   ];
   }
   FetchStations(){
-  let stationsList = this.apiSevice.GetTrains();
-  stationsList.forEach(x=>{
-    this.stations.push({'label':x.stationName,'value':x.stationId});
-  })
+  var stationsList ;
+  this.apiSevice.GetStations().subscribe(x=>{
+    stationsList=x;
+    if(stationsList!=null){
+      stationsList.forEach(x=>{
+        this.stations.push({'label':x.stationName,'value':x.stationId});
+      });
+    }else{
+      this.messageService.add({severity:'error',summary:'Oops!!!!',detail:'Error while retriving the details'});
+    }
+   
+  });
+ 
   }
   ChangeLanguageSettings(event){
     this.apiSevice.FetchLanguageSetting().subscribe((data:any)=>{
@@ -77,6 +95,9 @@ export class SearchComponent implements OnInit {
    this.apiSevice.languageSettings.next(constant);
    this.SetColumns();
     })
+  }
+  viewTrainDetails(rowData){
+
   }
 }
 
@@ -91,7 +112,9 @@ export interface Language{
  Departure : string;
  Doj : string;
  Station:string;
- ChangeLanguage:string,
- Welcome:string,
- Reset:string
+ ChangeLanguage:string;
+ Welcome:string;
+ Reset:string;
+ Availability:string;
+ Proceed:string;
 }

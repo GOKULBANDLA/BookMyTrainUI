@@ -1,20 +1,31 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import { BehaviorSubject, observable } from 'rxjs';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import { BehaviorSubject, Observable, observable, throwError } from 'rxjs';
 import { Language } from '../search/search.component';
+import { environment } from 'src/environments/environment';
+import { catchError } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
   languageSettings = new BehaviorSubject<Language>({ Language :"en",Source:"Source", "Destination" :"Destination",
   "Search" : "Search","TrainName" :"Train Name", "TrainNumber" :"Train Number", "Arrival" :"Arrival","Reset":"Reset",
-  "Departure" :"Departure", "Doj":"Date of Journey","Station" :"Select a Station","ChangeLanguage":"Change Language","Welcome":"Welcome to BookMyTrain"});
+  "Departure" :"Departure", "Doj":"Date of Journey","Station" :"Select a Station","ChangeLanguage":"Change Language","Welcome":"Welcome to BookMyTrain",
+  "Availability":"Availability", "Proceed":"Proceed"});
+ 
+ private readonly url=environment.Api_Url;
   constructor(private http:HttpClient) { }
   jsonUrl='assets/languageData.json';
-  GetTrains(){
-    return [{stationId:1,stationName:'Tirupati'},{stationId:2,stationName:'Bangalore'}]
+  GetStations(){
+    return this.http.get(this.url+'GetStations').pipe(catchError(err => { return this.errorHandler(err)}));
+  }
+  GetTrains(searchData){
+    return this.http.post(this.url+'FetchTrains',searchData).pipe(catchError(err => { return this.errorHandler(err)}));
   }
   FetchLanguageSetting(){
-   return this.http.get(this.jsonUrl)
+   return this.http.get(this.jsonUrl);
+  }
+  errorHandler(error: HttpErrorResponse) {
+    return throwError(error.message || "server error.");
   }
 }

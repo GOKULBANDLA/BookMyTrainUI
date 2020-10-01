@@ -11,7 +11,9 @@
    "Station" :"Select a Station",
    "ChangeLanguage":"Change Language",
    "Welcome":"Welcome to BookMyTrain",
-   "Reset":"Reset"
+   "Reset":"Reset",
+   "Availability":"Availability",
+   "Proceed":"Proceed"
 },
 "german":{
     "Source":"Quelle",
@@ -25,6 +27,8 @@
    "Station":"Wählen Sie eine Station",
    "ChangeLanguage":"Sprache ändern",
    "Welcome":"Willkommen bei BookMyTrain",
-   "Reset":"Zurücksetzen"
+   "Reset":"Zurücksetzen",
+   "Availability":"Verfügbarkeit",
+   "Proceed":"Vorgehen"
 }
 }
