@@ -1,13 +1,13 @@
 import { SearchComponent } from './search/search.component';
 import { AppComponent } from './app.component';
-//Angular Modules
+// Angular Modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
-//Prime Ng Modules
+// Prime Ng Modules
 import {InputTextModule} from 'primeng/inputtext';
 import {CalendarModule} from 'primeng/calendar';
 import {DropdownModule} from 'primeng/dropdown';

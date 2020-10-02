@@ -13,10 +13,18 @@
    "Welcome":"Welcome to BookMyTrain",
    "Reset":"Reset",
    "Availability":"Availability",
-   "Proceed":"Proceed"
+   "Proceed":"Proceed",
+   "ConfirmBooking":"Confirm Booking",
+   "TrainDetails" :"Train Details",
+   "Messages":[{"type":"serverError","summary":"Oops!!!!","detail":"There is an server outage. Please try again"},{
+    "type":"searchWithSameValues","summary":"Sorry!!!!","detail":"Source and destination cannot be same"},
+    {"type":"searchTrains_NoResults","summary":"Sorry!!!!","detail":"No trains are running based on search criteria"},
+    {"type":"booking_Success","summary":"Congratulations","detail":"Your booking is successful. We have sent an acknowledgement to your email"},
+    {"type":"booking_Failure","summary":"Sorry!!!!!!!!!","detail":"There is a issue while booking the ticket. Please try later"}
+    ]
 },
 "german":{
-    "Source":"Quelle",
+   "Source":"Quelle",
    "Destination" :"Ziel",
    "Search" : "Suche",
    "TrainName" :"Zugname",
@@ -29,6 +37,14 @@
    "Welcome":"Willkommen bei BookMyTrain",
    "Reset":"Zurücksetzen",
    "Availability":"Verfügbarkeit",
-   "Proceed":"Vorgehen"
+   "Proceed":"Vorgehen",
+   "ConfirmBooking":"Buchung bestätigen",
+   "TrainDetails" :"Zugdetails",
+   "Messages":[{"type":"serverError","summary":"Hoppla!!!!","detail":"Es liegt ein Serverausfall vor. Bitte versuche es erneut"},{
+    "type":"searchWithSameValues","summary":"Es tut uns leid!!!!","detail":"Quelle und Ziel können nicht identisch sein"},
+    {"type":"searchTrains_NoResults","summary":"Es tut uns leid!!!!","detail":"Nach Suchkriterien fahren keine Züge"},
+    {"type":"booking_Success","summary":"Herzliche Glückwünsche","detail":"Ihre Buchung ist erfolgreich. Wir haben eine Bestätigung an Ihre E-Mail gesendet"},
+    {"type":"booking_Failure","summary":"Es tut uns leid!!!!!!!!!","detail":"Bei der Buchung des Tickets ist ein Problem aufgetreten. Bitte versuch es später"}
+    ]
 }
 }
