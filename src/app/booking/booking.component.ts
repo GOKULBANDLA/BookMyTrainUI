@@ -16,6 +16,7 @@ export class BookingComponent implements OnInit {
   selectedTrain: any;
   languageSettings: Language;
   messages = [];
+  disable=false;
   ngOnInit() {
    this.apiService.languageSettings.subscribe(x => {
     this.SetColumns(x);

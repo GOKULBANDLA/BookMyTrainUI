@@ -6,7 +6,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 // Prime Ng Modules
 import {InputTextModule} from 'primeng/inputtext';
 import {CalendarModule} from 'primeng/calendar';
@@ -16,12 +16,16 @@ import {ButtonModule} from 'primeng/button';
 import {ToastModule} from 'primeng/toast';
 import {TableModule} from 'primeng/table';
 import {MenubarModule} from 'primeng/menubar';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import { BookingComponent } from './booking/booking.component';
+import { LoaderComponent } from './loader/loader.component';
+import {  LoaderInterceptor } from './shared/LoaderInterceptor';
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
-    BookingComponent
+    BookingComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -37,9 +41,14 @@ import { BookingComponent } from './booking/booking.component';
     ButtonModule,
     ToastModule,
     TableModule,
-    MenubarModule
+    MenubarModule,
+    ProgressSpinnerModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: LoaderInterceptor ,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

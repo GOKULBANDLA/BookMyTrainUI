@@ -18,7 +18,7 @@
                 <td>{{selectedTrain?.selectedData.arrival}}</td>
                 <td>{{selectedTrain?.searchData.dateOfJourney  | date: 'dd/MM/yyyy' }}</td>
                 <td>
-                    <button pButton type="button" label="{{languageSettings.ConfirmBooking}}" (click)="Confirm()" icon="pi pi-check" style="margin-right: .25em"></button>
+                    <button pButton [disabled] ="disable" type="button" label="{{languageSettings.ConfirmBooking}}" (click)="Confirm();this.disable=true" icon="pi pi-check" style="margin-right: .25em"></button>
                 </td>
             </tr>
     </table>
