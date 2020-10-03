@@ -50,14 +50,21 @@ export class BookingComponent implements OnInit {
     this.apiService.BookTicket(bookingDetails).subscribe(response => {
      if (response) {
       this.messageService.add({ severity: 'success', summary: this.messages[3].summary, detail: this.messages[3].detail  });
+      setTimeout(() => {
+        this.route.navigate(['search']);
+      }, 2000);
      } else {
       this.messageService.add({ severity: 'error', summary: this.messages[4].summary, detail: this.messages[4].detail });
+      setTimeout(() => {
+        this.route.navigate(['search']);
+      }, 2000);
      }
     }, error => {
       this.messageService.add({ severity: 'error', summary: this.messages[0].summary, detail: this.messages[0].detail });
+      setTimeout(() => {
+        this.route.navigate(['search']);
+      }, 2000);
     });
-    setTimeout(() => {
-      this.route.navigate(['search']);
-    }, 10000);
+
   }
 }
